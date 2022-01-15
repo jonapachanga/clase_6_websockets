@@ -1,0 +1,38 @@
+[
+  {
+    "title": "IPhone 13",
+    "price": "120365",
+    "thumbnail": "/cellphone21x21.png",
+    "id": 1
+  },
+  {
+    "title": "Xiaomi Box",
+    "price": "10590",
+    "thumbnail": "/xiaomi_box.png",
+    "id": 2
+  },
+  {
+    "title": "Chromecast",
+    "price": "10590",
+    "thumbnail": "/chromecast.png",
+    "id": 3
+  },
+  {
+    "title": "Laptop",
+    "price": "10590",
+    "thumbnail": "/laptop.png",
+    "id": 4
+  },
+  {
+    "title": "Monitor",
+    "price": "10590",
+    "thumbnail": "/monitor.png",
+    "id": 5
+  },
+  {
+    "title": "Auriculares",
+    "price": "10590",
+    "thumbnail": "/auriculares.png",
+    "id": 6
+  }
+]
