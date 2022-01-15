@@ -3,13 +3,13 @@ const contenedor = new Contenedor('products.json');
 const util = require('../Utils/Util');
 
 module.exports = class ProductController {
-    getAllProducts = async (req, res) => {
+    async getAllProducts(req, res) {
         const products = await contenedor.getAll();
 
         res.json(products);
     }
 
-    getRandomProduct = async (req, res) => {
+    async getRandomProduct(req, res) {
         const products = await contenedor.getAll();
 
         const i = util.getRandomInt(products.length);
