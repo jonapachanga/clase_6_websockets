@@ -1,16 +1,28 @@
 const express = require('express');
-const app = express();
 
-const ProductController = require("../controllers/ProductController");
-const productController = new ProductController();
+module.exports = class Server {
+    constructor() {
+        this.app = express();
+        this.port = 8080;
+        this.productRoutes = '/api/products';
 
-app.get('/', (req, res) => {
-    res.send('Try to put /products or /productRandom');
-});
+        this.middlewares();
+        this.routes();
+    }
 
-app.get('/products', productController.getAllProducts);
+    middlewares() {
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(express.static('public'));
+    }
 
-app.get('/productRandom', productController.getRandomProduct);
+    routes() {
+        this.app.use(this.productRoutes, require('../routes/product.routes'));
+    }
 
-
-module.exports = app;
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Listen on: http://localhost:${ this.port }`);
+        })
+    }
+}

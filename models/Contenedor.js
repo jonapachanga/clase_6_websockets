@@ -50,7 +50,7 @@ module.exports = class Contenedor {
     }
 
     async getById(productId) {
-        const product = this.products.filter(product => product.id === productId);
+        const product = this.products.filter(product => product.id === Number(productId));
 
         return product.length ? product[0] : null;
     }
@@ -60,13 +60,25 @@ module.exports = class Contenedor {
     }
 
     async deleteById(productId) {
-        this.products = this.products.filter(product => product.id !== productId);
+        this.products = this.products.filter(product => product.id !== Number(productId));
         await this._internalSave();
     }
 
     async deleteAll() {
         this.products.length = 0;
         await this._internalSave();
+    }
+
+    async update(id, newProduct) {
+       const index = this.products.findIndex(value => value.id === Number(id));
+
+       this.products[index].title = newProduct.title;
+       this.products[index].price = newProduct.price;
+       this.products[index].thumbnail = newProduct.thumbnail;
+
+       await this._internalSave();
+
+       return this.products[index];
     }
 
     existFile(path) {

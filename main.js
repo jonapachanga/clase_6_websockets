@@ -1,6 +1,4 @@
-const server = require('./core/Server');
-const PORT = 3000;
+const Server = require('./core/Server');
 
-server.listen(PORT, () => {
-    console.log(`Listen on: http://localhost:${PORT}`);
-})
+const server = new Server();
+server.listen();
