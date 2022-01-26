@@ -1,5 +1,5 @@
 const fs = require('fs');
-const mapper = require('../Utils/ObjectMapper');
+const mapper = require('../utils/ObjectMapper');
 
 module.exports = class Contenedor {
     constructor(fileName) {

@@ -1,7 +1,7 @@
 const { response, request } = require('express');
 const HttpStatus = require('http-status-codes');
 
-const util = require('../Utils/Util');
+const util = require('../utils/Util');
 
 const Contenedor = require('../models/Contenedor');
 
