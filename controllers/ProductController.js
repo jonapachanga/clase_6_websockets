@@ -1,13 +1,11 @@
 const { response, request } = require('express');
 const HttpStatus = require('http-status-codes');
 
-const util = require('../utils/Util');
-
 const Contenedor = require('../models/Contenedor');
 
 const productRepository = new Contenedor('products.json');
 
-module.exports = class ProductController {
+class ProductController {
 
     async _findAllProducts() {
         return await productRepository.getAll();
@@ -19,26 +17,18 @@ module.exports = class ProductController {
         res.status(HttpStatus.OK).json(products);
     }
 
-    async _findById(id) {
-        return await productRepository.getById(id);
-    }
-
     async findOneById(req = request, res = response) {
         const { id } = req.params;
 
         const product = await productRepository.getById(id);
 
-        if (!product) {
-            return res.status(HttpStatus.NOT_FOUND).send({ error: 'Product not found' });
-        }
+        const statusCode = !product ? HttpStatus.NOT_FOUND : HttpStatus.OK;
 
-        return res.status(HttpStatus.OK).json(product);
+        return res.status(statusCode).json(product || { error: 'Product not found' });
     }
 
     async save(req = request, res = response) {
-        const { title, price, thumbnail } = req.body;
-
-        const newProduct = { title, price, thumbnail };
+        const { ...newProduct } = req.body;
 
         const id = productRepository.save(newProduct);
 
@@ -47,15 +37,13 @@ module.exports = class ProductController {
 
     async update(req = request, res = response) {
         const { id } = req.params;
-        const { title, price, thumbnail } = req.body;
+        const { ...newProduct } = req.body;
 
         const product = await productRepository.getById(id);
 
         if (!product) {
-            return res.status(HttpStatus.NOT_FOUND).send({ error: 'Product not found' });
+            return res.status(HttpStatus.NOT_FOUND).json({ error: 'Product not found' });
         }
-
-        const newProduct = { title, price, thumbnail }
 
         const updatedProduct = await productRepository.update(id, newProduct);
 
@@ -69,7 +57,7 @@ module.exports = class ProductController {
         const product = await productRepository.getById(id);
 
         if (!product) {
-            return res.status(HttpStatus.NOT_FOUND).send({ error: 'Product not found' });
+            return res.status(HttpStatus.NOT_FOUND).json({ error: 'Product not found' });
         }
 
         await productRepository.deleteById(id);
@@ -78,3 +66,5 @@ module.exports = class ProductController {
     }
 
 }
+
+module.exports = ProductController;

@@ -43,7 +43,7 @@
   },
   {
     "title": "Vaso Termico Wagner 480ml",
-    "price": "20654",
+    "price": "1000",
     "thumbnail": "/wagner.png",
     "id": 8
   },
@@ -52,5 +52,11 @@
     "price": "12312",
     "thumbnail": "monitor21x22",
     "id": 9
+  },
+  {
+    "title": "Teclado mecanico Logitech",
+    "price": "25000",
+    "thumbnail": "/logi915.png",
+    "id": 10
   }
 ]
