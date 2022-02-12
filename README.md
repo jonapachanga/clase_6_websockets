@@ -1,4 +1,4 @@
-# CoderHouse Clase 4 - API Rest
+# CoderHouse Clase 6 - Websockets
 
 ## How to run
 
