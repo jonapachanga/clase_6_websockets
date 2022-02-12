@@ -1,4 +1,5 @@
 const express = require('express');
+const Socket = require('../utils/socket');
 
 module.exports = class Server {
     constructor() {
@@ -13,7 +14,6 @@ module.exports = class Server {
     middlewares() {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
-        this.app.use(express.static('public'));
     }
 
     routes() {
@@ -21,10 +21,14 @@ module.exports = class Server {
     }
 
     listen() {
-        this.app.listen(this.port, () => {
+        const httpServer = this.app.listen(this.port, () => {
             console.log(`Listen on: http://localhost:${ this.port }`);
         })
 
         this.app.on('error', error => console.log(`Server error ${ error }`))
+
+        const socket = new Socket(httpServer);
+
+        socket.init();
     }
 }

@@ -24,39 +24,9 @@
     "id": 4
   },
   {
-    "title": "Monitor",
-    "price": "10590",
-    "thumbnail": "/monitor.png",
-    "id": 5
-  },
-  {
     "title": "Auriculares",
-    "price": "10590",
-    "thumbnail": "/auriculares.png",
-    "id": 6
-  },
-  {
-    "title": "Termo Coleman",
-    "price": "11300",
-    "thumbnail": "/coleman21x21.png",
-    "id": 7
-  },
-  {
-    "title": "Vaso Termico Wagner 480ml",
-    "price": "1000",
-    "thumbnail": "/wagner.png",
-    "id": 8
-  },
-  {
-    "title": "monitor",
-    "price": "12312",
-    "thumbnail": "monitor21x22",
-    "id": 9
-  },
-  {
-    "title": "Teclado mecanico Logitech",
-    "price": "25000",
-    "thumbnail": "/logi915.png",
-    "id": 10
+    "price": "123",
+    "thumbnail": "auriculares.png",
+    "id": 5
   }
 ]
